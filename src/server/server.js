@@ -1,8 +1,18 @@
-let express = require('express')
-let app = express()
+const express = require('express')
+const Router = express.Router()
+const http = require('http')
+const bodyParser = require('body-parser')
+const app = express()
+const server = require('http').Server(app)
 
-app.get('/123', function(req, res){
-    res.send({'name': 'lhj'})
+
+app.use(bodyParser.json())
+Router.get('/list', function(req, res){
+  	res.json({'name': '123'})
 })
 
-app.listen(8081)
+app.use('/user', Router)
+/*创建一个web服务器-链式调用*/
+server.listen(1234, function() {
+    console.log('server start');
+})
