@@ -7,6 +7,7 @@
     "@babel/plugin-transform-react-jsx-self": "^7.2.0",
     "@babel/plugin-transform-react-jsx-source": "^7.2.0",
     "@svgr/webpack": "4.1.0",
+    "antd": "^3.16.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -62,8 +63,8 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "start": "node -max_old_space_size=4096 scripts/start.js",
+    "build": "node -max_old_space_size=4096 scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -120,17 +121,5 @@
       "D:\\project\\back-manage-system\\node_modules\\jest-watch-typeahead\\testname.js"
     ]
   },
-  "babel": {
-    "plugins": [
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "legacy": true
-        }
-      ]
-    ],
-    "presets": [
-      "react-app"
-    ]
-  }
+  "proxy": "http://localhost:1234"
 }
