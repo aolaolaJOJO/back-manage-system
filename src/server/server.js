@@ -4,10 +4,9 @@ const http = require('http')
 const bodyParser = require('body-parser')
 const app = express()
 const server = require('http').Server(app)
-
+const cookieParser = require('cookie-parser')
 const model = require('./model')
 const User = model.getModel('user')
-app.use(bodyParser.json())
 
 // var mongoose = require('mongoose')
 // mongoose.deleteModel('user');
@@ -22,8 +21,10 @@ Router.post('/login', function(req, res) {
         pwd: pwd
     }, function(err, adventure) {
         if (adventure) {
+            res.cookie('userid', adventure._id)
             return res.json({
                 code: 0,
+                data: adventure,
                 msg: '登录成功！'
             })
         } else {
@@ -101,6 +102,35 @@ Router.post('/delete', function(req, res) {
         })
     })
 })
+// 校验cookie 是否需要登录
+Router.get('/getAuth', function(req, res) {
+    const {
+        userid
+    } = req.cookies
+    if (!userid) {
+        return res.json({
+            code: 1
+        })
+    }
+    User.findOne({
+        _id: userid
+    }, function(err, adventure) {
+        if (err) {
+            return res.json({
+                code: 1,
+                msg: '后端出错了'
+            })
+        }
+        if (adventure) {
+            return res.json({
+                code: 0,
+                data: adventure
+            })
+        }
+    })
+})
+app.use(bodyParser.json())
+app.use(cookieParser())
 app.use('/user', Router)
 /*创建一个web服务器-链式调用*/
 server.listen(1234, function() {
