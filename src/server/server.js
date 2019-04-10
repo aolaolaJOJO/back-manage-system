@@ -6,60 +6,95 @@ const app = express()
 const server = require('http').Server(app)
 
 const model = require('./model')
-const Man = model.getModel('man')
+const User = model.getModel('user')
 app.use(bodyParser.json())
-Router.post('/register', function(req, res){
-	const {
-        name,
-        age,
-        height,
-        sex
+
+// var mongoose = require('mongoose')
+// mongoose.deleteModel('user');
+// 登录
+Router.post('/login', function(req, res) {
+    const {
+        user,
+        pwd
     } = req.body
-	console.log(req.body)
-	const manModel = new Man({
-        name,
-        age,
-        sex,
-        height
-    })
-    manModel.save(function(e, d) {
-       if (e) {
+    User.findOne({
+        user: user,
+        pwd: pwd
+    }, function(err, adventure) {
+        if (adventure) {
             return res.json({
-                code: 1,
-                msg: '后端出错了'
+                code: 0,
+                msg: '登录成功！'
+            })
+        } else {
+            return res.json({
+                code: -1,
+                msg: '用户名或者密码错误！'
             })
         }
-        const {
-            name,
-            _id
-        } = d
-        console.log('这是'+d)
-       	return res.json({
-            code: 0,
-            data: {
-                name,
-		        age,
-		        sex,
-		        height,
-                _id
+    })
+})
+// 注册
+Router.post('/register', function(req, res) {
+    const {
+        user,
+        pwd
+    } = req.body
+    const userModel = new User({
+        user,
+        pwd
+    })
+    User.find({
+        user: user
+    }, function(err, docs) {
+        if (!err && docs.length >= 1) {
+            return res.json({
+                code: -1,
+                msg: '该用户已被注册！'
+            })
+        }
+        userModel.save(function(e, d) {
+            if (e) {
+                return res.json({
+                    code: 1,
+                    msg: '后端出错了'
+                })
             }
+            const {
+                user,
+                pwd,
+                _id
+            } = d
+            return res.json({
+                code: 0,
+                data: {
+                    msg: '恭喜您注册成功！',
+                    user,
+                    pwd,
+                    _id
+                }
+            })
         })
     })
     // res.json({'name': '123'})
 })
-Router.get('/list', function(req, res){
-    Man.find({ }, function (err, docs) { 
+// 查询用户列表
+Router.get('/list', function(req, res) {
+    User.find({}, function(err, docs) {
         return res.json({
             code: 0,
             data: docs
         })
     })
 })
-Router.post('/delete', function(req, res){
+// 删除
+Router.post('/delete', function(req, res) {
     const {
-        name
+        user
     } = req.body
-    Man.deleteMany({name: name}, function (err, docs) { 
+    User.deleteMany({
+        user: user
+    }, function(err, docs) {
         return res.json({
             code: 0,
             data: docs

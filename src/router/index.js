@@ -1,7 +1,12 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from "react-router-dom"
 import Admin from '../admin'
 import Login from '../pages/login'
+import Register from '../pages/register'
 import menuList from './menuConfig'
 import AuthRouter from '../component/authRouter'
 export default class IRouter extends React.Component {
@@ -12,6 +17,7 @@ export default class IRouter extends React.Component {
                     <AuthRouter></AuthRouter>
                     <Switch>
                         <Route path="/login" component={Login}></Route>
+                        <Route path="/register" component={Register}></Route>
                         <Route path="/admin" render={()=>
                                 <Admin>
                                     {menuList.map(v =>(
