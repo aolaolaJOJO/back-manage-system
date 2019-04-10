@@ -9,4 +9,5 @@ const menuList = [{
     path: '/admin/user',
     component: User
 }];
+
 export default menuList;

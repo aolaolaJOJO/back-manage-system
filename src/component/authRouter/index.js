@@ -3,6 +3,13 @@ import {
     withRouter
 } from 'react-router-dom'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { loadData } from '../../store/user.redux'
+
+@withRouter
+@connect(null, {
+    loadData
+})
 // 使用withRouter获得match location history属性
 class AuthRoute extends React.Component {
     componentDidMount() {
@@ -12,17 +19,19 @@ class AuthRoute extends React.Component {
             return;
         }
         axios.get('/user/getAuth').then(res => {
-            if (res.data.code == 0) {
-                this.props.history.push('/admin/index')
-            } else {
-                this.props.history.push('/login')
+            if (res.status === 200) {
+                if (res.data.code == 0) {
+                    this.props.loadData(res.data.data)
+                    this.props.history.push(pathname)
+                } else {
+                    this.props.history.push('/login')
+                }
             }
+            
         })
-        this.props.history.push('/login')
     }
     render() {
         return null
     }
 }
-const ShowTheLocationWithRouter = withRouter(AuthRoute);
-export default ShowTheLocationWithRouter
+export default AuthRoute

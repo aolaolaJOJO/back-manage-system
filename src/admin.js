@@ -1,6 +1,8 @@
 import React from 'react'
 import {
-    Link
+    Link,
+    Redirect,
+    withRouter
 } from 'react-router-dom'
 import {
     Layout,
@@ -9,16 +11,17 @@ import {
 } from 'antd';
 import HeaderTop from './component/header'
 import NavLeft from './component/navLeft'
+import menuList from './router/menuConfig'
 import './admin.less'
 const {
     Sider,
     Content,
     Header
 } = Layout;
-
-export default class Admin extends React.Component {
+@withRouter
+class Admin extends React.Component {
     state = {
-        collapsed: false,
+        collapsed: false
     };
 
     toggle = () => {
@@ -26,8 +29,21 @@ export default class Admin extends React.Component {
             collapsed: !this.state.collapsed,
         });
     }
+    getName = () => {
+        let title = menuList.map(v => {
+            if(v.path == this.props.location.pathname) {
+                return v.title
+            }
+         }).filter(item => {
+            if(item) {
+                return item
+            }
+         })
+         return title
+    }
     render() {
-        return (
+        const name = this.getName()
+        return (    
             <div>
                 <Layout className="layout">
                     <Sider
@@ -48,7 +64,7 @@ export default class Admin extends React.Component {
                             />
                             <HeaderTop></HeaderTop>
                         </Header>
-                        <div className="breadcrumb">用户管理</div>
+                        <div className="breadcrumb">{name}</div>
                         <Content className="content">
                             {this.props.children}
                         </Content>
@@ -58,3 +74,4 @@ export default class Admin extends React.Component {
         )
     }
 }
+export default Admin

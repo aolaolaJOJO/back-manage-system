@@ -3,12 +3,15 @@ import {
     Link
 } from 'react-router-dom'
 import './index.less'
-export default class Index extends React.Component {
+import { Button } from 'antd'
+class Index extends React.Component {
     render() {
         return (
             <div>
-                <div className="index">首页</div>
+                <div className="index">首页
+                </div>
             </div>
         )
     }
 }
+export default Index

@@ -51,7 +51,7 @@ class NormalRegisterForm extends React.Component {
                   {getFieldDecorator('pwd', {
                     rules: [{ required: true, message: 'Please input your pwd!' }],
                   })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="pwd" />
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="pwd" />
                   )}
                 </Form.Item>
                 <Form.Item>

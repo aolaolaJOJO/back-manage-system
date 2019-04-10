@@ -5,10 +5,13 @@ import {
     Switch
 } from "react-router-dom"
 import Admin from '../admin'
+import AuthRouter from '../component/authRouter'
+
 import Login from '../pages/login'
 import Register from '../pages/register'
-import menuList from './menuConfig'
-import AuthRouter from '../component/authRouter'
+import Index from '../pages/index'
+import User from '../pages/user'
+
 export default class IRouter extends React.Component {
     render() {
         return (
@@ -20,9 +23,8 @@ export default class IRouter extends React.Component {
                         <Route path="/register" component={Register}></Route>
                         <Route path="/admin" render={()=>
                                 <Admin>
-                                    {menuList.map(v =>(
-                                        <Route key={v.path} path={v.path} component={v.component}></Route>
-                                    ))}
+                                    <Route path='/admin/index' component={Index}></Route>
+                                    <Route path='/admin/user' component={User}></Route>
                                 </Admin>
                             }></Route>
                     </Switch>
