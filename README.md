@@ -26,8 +26,6 @@ src  存放项目
    
 - pages 具体页面代码
   
-  - user 用户
-  
 - router 存放路由react-router配置代码
    
 - server 存放node服务及mongodb配置的代码
