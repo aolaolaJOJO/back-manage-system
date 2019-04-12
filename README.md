@@ -1,24 +1,24 @@
-# 基于express+mongodb+react全家桶的后台管理系统demo
+## 基于express+mongodb+react全家桶的后台管理系统demo
 —————————————————————————————————————————————————————
-## 具体步骤
+### 具体步骤
 
-### 1. `npm install`
+#### 1. `npm install`
 
-### 2. 安装mongodb
+#### 2. 安装mongodb
 
-#### 下载地址： [mongodb官网](https://www.mongodb.com/)
+##### 下载地址： [mongodb官网](https://www.mongodb.com/)
 
-#### 安装完成后，运行bin目录下的mongo.exe，启动mongodb数据库
+##### 安装完成后，运行bin目录下的mongo.exe，启动mongodb数据库
 
-#### 数据库方面的操作，具体查看网站 [mongoose官网]( https://mongoosejs.com//)
+##### 数据库方面的操作，具体查看网站 [mongoose官网]( https://mongoosejs.com//)
 
-### 3. 启动服务
+#### 3. 启动服务
 
-#### 进入src下的server目录，运行node server，启动服务端
+##### 进入src下的server目录，运行`node server`，启动服务端
 
-### 4. `npm start`
+#### 4. `npm start`
 
-## 文件目录
+### 文件目录
 
 src  存放项目
 
