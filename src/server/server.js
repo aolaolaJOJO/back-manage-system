@@ -1,6 +1,7 @@
 const express = require('express')
 const Router = express.Router()
-const http = require('http')
+const http = require('http') //用于请求服务
+const multer = require('multer') //用于文件上传
 const bodyParser = require('body-parser')
 const app = express()
 const server = require('http').Server(app)
@@ -8,8 +9,7 @@ const cookieParser = require('cookie-parser')
 const model = require('./model')
 const User = model.getModel('user')
 
-// var mongoose = require('mongoose')
-// mongoose.deleteModel('user');
+
 // 登录
 Router.post('/login', function(req, res) {
     const {
@@ -39,11 +39,15 @@ Router.post('/login', function(req, res) {
 Router.post('/register', function(req, res) {
     const {
         user,
-        pwd
+        pwd,
+        avatar,
+        type
     } = req.body
     const userModel = new User({
         user,
-        pwd
+        pwd,
+        type,
+        avatar
     })
     User.find({
         user: user
@@ -91,10 +95,12 @@ Router.get('/list', function(req, res) {
 // 删除
 Router.post('/delete', function(req, res) {
     const {
-        user
+        user,
+        avatar
     } = req.body
     User.deleteMany({
-        user: user
+        user: user,
+        avatar: avatar
     }, function(err, docs) {
         return res.json({
             code: 0,
@@ -129,6 +135,7 @@ Router.get('/getAuth', function(req, res) {
         }
     })
 })
+
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use('/user', Router)

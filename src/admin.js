@@ -1,12 +1,9 @@
 import React from 'react'
 import {
-    Link,
-    Redirect,
     withRouter
 } from 'react-router-dom'
 import {
     Layout,
-    Menu,
     Icon
 } from 'antd';
 import HeaderTop from './component/header'
@@ -31,19 +28,19 @@ class Admin extends React.Component {
     }
     getName = () => {
         let title = menuList.map(v => {
-            if(v.path == this.props.location.pathname) {
+            if (v.path === this.props.location.pathname) {
                 return v.title
             }
-         }).filter(item => {
-            if(item) {
+        }).filter(item => {
+            if (item) {
                 return item
             }
-         })
-         return title
+        })
+        return title
     }
     render() {
         const name = this.getName()
-        return (    
+        return (
             <div>
                 <Layout className="layout">
                     <Sider
