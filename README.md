@@ -1,9 +1,11 @@
 #基于express+mongodb+react全家桶的后台管理系统demo
 
 ##步骤一
+
 ###npm install 安装包
 
 ##步骤二
+
 ###安装mongodb 地址 => https://www.mongodb.com/
 
 ###安装完成后，运行bin目录下的mongo.exe，启动mongodb数据库
