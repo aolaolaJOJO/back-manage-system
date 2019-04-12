@@ -6,7 +6,7 @@
 
 ### 2. 安装mongodb
 
-#### [mongodb官网](https://www.mongodb.com/)
+#### 下载地址： [mongodb官网](https://www.mongodb.com/)
 
 #### 安装完成后，运行bin目录下的mongo.exe，启动mongodb数据库
 
@@ -20,14 +20,14 @@
 
 ## 文件目录
 
-### --src  存放项目
+### src  存放项目
 
-#### ---component 组件代码
+#### - component 组件代码
    
-#### ---pages 具体页面代码
+#### - pages 具体页面代码
   
-#### ---router 存放路由react-router配置代码
+#### - router 存放路由react-router配置代码
    
-#### ---server 存放node服务及mongodb配置的代码
+#### - server 存放node服务及mongodb配置的代码
    
-#### ---store  存放react-redux状态管理代码
+#### - store  存放react-redux状态管理代码
