@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 基于express+mongodb+react全家桶的后台管理系统demo
+—————————————————————————————————————————————————————
+### 一、具体步骤
 
-## Available Scripts
+#### 1. `npm install`
 
-In the project directory, you can run:
+#### 2. 安装mongodb
 
-### `npm start`
+##### 下载地址： [mongodb官网](https://www.mongodb.com/)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### 安装完成后，运行bin目录下的mongo.exe，启动mongodb数据库
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+##### 数据库方面的操作，具体查看网站 [mongoose官网]( https://mongoosejs.com//)
 
-### `npm test`
+#### 3. 启动服务
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##### 进入src下的server目录，运行`node server`，启动服务端
 
-### `npm run build`
+#### 4. `npm start`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 二、文件目录
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+src  存放项目
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- component 组件代码
+   
+- pages 具体页面代码
+  
+- router 存放路由react-router配置代码
+   
+- server 存放node服务及mongodb配置的代码
+   
+- store  存放react-redux状态管理代码
